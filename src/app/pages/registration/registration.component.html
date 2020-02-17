@@ -1,0 +1,546 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+     style="min-height: 600px;
+     background-image: url(assets/img/theme/profile-cover.jpg);
+     background-size: cover;
+     background-position: center top;">
+    <span class="mask bg-gradient-cyan opacity-4"></span>
+</div>
+
+<div class="container-fluid" style="margin-top: -30rem !important;">
+    <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+            <div class="card card-profile shadow">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 order-lg-3">
+                        <div class="card-profile-image">
+                            <a href="javascript:void(0)">
+                                <img src="assets/img/sipag/maqueneta.png" class="rounded">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0" style="padding-top: 16.5rem !important;">
+                    <div class="text-center">
+                        <div class="h2 mt-4">
+                            <i class="ni business_briefcase-24 mr-2"></i>POS 100% Gratis.
+                        </div>
+                        <div>
+                            <i class="ni education_hat mr-2"></i>Realize o credenciamento para adquirir já a sua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Estabelecimento Comercial</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <h6 class="heading-small text-muted mb-4">Dados Estabelecimento</h6>
+
+                        <div class="alert alert-danger" role="alert" *ngIf="validation != null">
+                            <strong>{{validation.apierror.message}}</strong>
+                            <div *ngFor="let error of validation.apierror.subErrors">
+                                <li>{{error.field}} : {{error.message}}</li>
+                            </div>
+                        </div>
+
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label"
+                                               for="input-document">Documento</label>
+                                        <input type="email" required="true"
+                                               id="input-document"
+                                               class="form-control form-control-alternative"
+                                               placeholder="00.000.000/0000-00"
+                                               name="inputDocumentField"
+                                               #inputDocumentField="ngModel"
+                                               [(ngModel)]="accreditation.merchant.document">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label"
+                                               for="input-first-name">Razão Social</label>
+                                        <input type="text" required="true"
+                                               id="input-first-name"
+                                               class="form-control form-control-alternative"
+                                               placeholder="Razão Social"
+                                               name="inputCompanyNameField"
+                                               #inputCompanyNameFIeld="ngModel"
+                                               [(ngModel)]="accreditation.merchant.companyName">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label"
+                                               for="input-last-name">Nome Fantasia</label>
+                                        <input type="text" id="input-last-name" required="true"
+                                               class="form-control form-control-alternative"
+                                               placeholder="Nome Fantasia"
+                                               name="inputTradingNameField"
+                                               #inputTradingNameField="ngModel"
+                                               [(ngModel)]="accreditation.merchant.tradingName">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Telefones -->
+                        <h6 class="heading-small text-muted mb-4">Dados Contato</h6>
+                        <div class="pl-lg-4">
+
+                            <!-- TELEFONE 1-->
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Phone</label>
+                                        <input id="input-telefone-0" class="form-control form-control-alternative" placeholder="Telefone"
+                                               type="text" name="telefone0Field" #telefone0Field="ngModel" required="true"
+                                               [(ngModel)]="accreditation.phones[0].phone">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-city">Telephone</label>
+                                        <select id="input-tptelefone-0" class="form-control form-control-alternative"
+                                                name="tptelefone0Field" #tptelefone0Field="ngModel" required="true"
+                                                [(ngModel)]="accreditation.phones[0].typePhone">
+                                            <option value="1">Celular</option>
+                                            <option value="2">Comercial</option>
+                                            <option value="3">Residencial</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- TELEFONE 2-->
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Phone</label>
+                                        <input id="input-telefone-1" class="form-control form-control-alternative" placeholder="Telefone"
+                                               type="text" name="telefone1Field" #telefone1Field="ngModel" required="true"
+                                               [(ngModel)]="accreditation.phones[1].phone">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-city">Telephone</label>
+                                        <select id="input-tptelefone-1" class="form-control form-control-alternative"
+                                                name="tptelefone1Field" #tptelefone1Field="ngModel" required="true"
+                                                [(ngModel)]="accreditation.phones[1].typePhone">
+                                            <option value="1">Celular</option>
+                                            <option value="2">Comercial</option>
+                                            <option value="3">Residencial</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Emails -->
+                        <h6 class="heading-small text-muted mb-4">Emails</h6>
+                        <div class="pl-lg-4">
+
+                            <!-- Email 1-->
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Email</label>
+                                        <input id="input-email-0" class="form-control form-control-alternative" placeholder="Email"
+                                               type="text" name="email0Field" #email0Field="ngModel" required="true"
+                                               [(ngModel)]="accreditation.emails[0].email">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Email 2-->
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Email</label>
+                                        <input id="input-email-1" class="form-control form-control-alternative" placeholder="Email"
+                                               type="text" name="email1Field" #email1Field="ngModel" required="true"
+                                               [(ngModel)]="accreditation.emails[1].email">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <hr class="my-4"/>
+                        <!-- Address -->
+                        <h6 class="heading-small text-muted mb-4">Dados Endereço</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-zip-code">CEP</label>
+                                        <input type="text" id="input-zip-code" class="form-control form-control-alternative"
+                                               placeholder="CEP" name="zipcodeNameField" #zipcodeNameField="ngModel"
+                                               [(ngModel)]="accreditation.address.zipCode">
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin-top: 4%;">
+                                    <div class="form-group">
+                                        <div class="justify-content-between">
+                                            <button class="btn btn-sm btn-primary float-right" (click)="buscarCep()">Buscar Cep</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Endereço</label>
+                                        <input id="input-address" class="form-control form-control-alternative" placeholder="Endereço"
+                                               type="text" name="addressNameField" #addressNameField="ngModel"
+                                               [(ngModel)]="accreditation.address.publicPlace">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-city">Cidade</label>
+                                        <input type="text" id="input-city" class="form-control form-control-alternative"
+                                               placeholder="Cidade" name="cityNameField" #cityNameField="ngModel"
+                                               [(ngModel)]="accreditation.address.city">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-uf">UF</label>
+                                        <input type="text" id="input-uf" class="form-control form-control-alternative"
+                                               placeholder="Uf" name="ufField" #ufField="ngModel"
+                                               [(ngModel)]="accreditation.address.uf">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-neighborhood">Bairro</label>
+                                        <input type="text" id="input-neighborhood" class="form-control form-control-alternative"
+                                               placeholder="Bairro" name="neighborhoodField" #neighborhoodField="ngModel"
+                                               [(ngModel)]="accreditation.address.neighborhood">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-complement">Complemento</label>
+                                        <input type="text" id="input-complement" class="form-control form-control-alternative"
+                                               placeholder="Complemento" name="complementField" #complementField="ngModel"
+                                               [(ngModel)]="accreditation.address.complement">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4"/>
+
+                        <!-- Taxas -->
+                        <h6 class="heading-small text-muted mb-4">Comparação de acordo entre processadoras</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card shadow">
+                                        <div class="card-header border-0">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <h3 class="mb-0">SIPAG</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table align-items-center table-flush">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Produtos</th>
+                                                    <th scope="col">Taxas</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Débito
+                                                    </th>
+                                                    <td>
+                                                        2,00%
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Crédito
+                                                    </th>
+                                                    <td>
+                                                        2,80%
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Crédito Parcelado
+                                                    </th>
+                                                    <td>
+                                                        3,25%
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card shadow">
+                                        <div class="card-header border-0">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <h3 class="mb-0">CIELO</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table align-items-center table-flush">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Produtos</th>
+                                                    <th scope="col">Taxas</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Débito
+                                                    </th>
+                                                    <td>
+                                                        2,30%
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Crédito
+                                                    </th>
+                                                    <td>
+                                                        2,99%
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Crédito Parcelado
+                                                    </th>
+                                                    <td>
+                                                        3,45%
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card shadow">
+                                        <div class="card-header border-0">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <h3 class="mb-0">STONE</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table align-items-center table-flush">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Produtos</th>
+                                                    <th scope="col">Taxas</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Débito
+                                                    </th>
+                                                    <td>
+                                                        2,80%
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Crédito
+                                                    </th>
+                                                    <td>
+                                                        3,20%
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Crédito Parcelado
+                                                    </th>
+                                                    <td>
+                                                        3,95%
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4"/>
+                        <h6 class="heading-small text-muted mb-4">Domicilio Bancario</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card shadow">
+
+                                        <div class="table-responsive">
+                                            <table class="table align-items-center table-flush">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Produto</th>
+                                                    <th scope="col">Domicilio</th>
+                                                    <th scope="col">Agência</th>
+                                                    <th scope="col">Conta</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Débito
+                                                    </th>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Domicilio"
+                                                               name="domicileDebitField"
+                                                               #domicileDebitField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[0].domicile">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Agência"
+                                                               name="agencyDebitField"
+                                                               #agencyDebitField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[0].agency">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Conta"
+                                                               name="accountDebitField"
+                                                               #accountDebitField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[0].account">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Crédito
+                                                    </th>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Domicilio"
+                                                               name="domicileCreditField"
+                                                               #domicileCreditField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[1].domicile">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Agência"
+                                                               name="agencyCreditField"
+                                                               #agencyCreditField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[1].agency">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Conta"
+                                                               name="accountCreditField"
+                                                               #accountCreditField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[1].account">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        Crédito Parcelado
+                                                    </th>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Domicilio"
+                                                               name="domicileCreditParcField"
+                                                               #domicileCreditParcField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[2].domicile">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Agência"
+                                                               name="agencyCreditParcField"
+                                                               #agencyCreditParcField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[2].agency">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="Conta"
+                                                               name="accountCreditParcField"
+                                                               #accountCreditParcField="ngModel"
+                                                               [(ngModel)]="accreditation.domicileBank[2].account">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4"/>
+                        <div class="pl-lg-4">
+                            <div class="row" style="display: block;">
+                                <div class="justify-content-between">
+                                    <button class="btn btn-lg btn-primary float-right" (click)="salvar()">Credenciar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

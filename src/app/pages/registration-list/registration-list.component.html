@@ -1,0 +1,96 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+     style="min-height: 600px;
+     background-image: url(assets/img/theme/profile-cover.jpg);
+     background-size: cover;
+     background-position: center top;">
+    <span class="mask bg-gradient-cyan opacity-4"></span>
+</div>
+
+<div class="container-fluid" style="margin-top: -30rem !important;">
+    <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+            <div class="card card-profile shadow">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 order-lg-3">
+                        <div class="card-profile-image">
+                            <a href="javascript:void(0)">
+                                <img src="assets/img/sipag/maqueneta.png" class="rounded">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0" style="padding-top: 16.5rem !important;">
+                    <div class="text-center">
+                        <div class="h2 mt-4">
+                            <i class="ni business_briefcase-24 mr-2"></i>POS 100% Gratis.
+                        </div>
+                        <div>
+                            <i class="ni education_hat mr-2"></i>Realize o credenciamento para adquirir já a sua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <h3 class="mb-0">Administração EC</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+
+                                <thead class="thead-light">
+                                  <tr>
+                                      <th scope="col">ID</th>
+                                      <th scope="col">Documento</th>
+                                      <th scope="col">Razação Social</th>
+                                      <th scope="col">Nome Fantasia</th>
+                                      <th scope="col">Ação</th>
+                                  </tr>
+                                </thead>
+
+                                <tbody>
+
+                                  <tr *ngFor="let merchant of merchants">
+
+                                      <td>
+                                          {{merchant.id}}
+                                      </td>
+
+                                      <th scope="row">
+                                          <div class="media align-items-center">
+                                              <div class="media-body">
+                                                  <span class="mb-0 text-sm">{{merchant.document}}</span>
+                                              </div>
+                                          </div>
+                                      </th>
+
+                                      <td>
+                                          {{merchant.companyName}}
+                                      </td>
+
+                                      <td>
+                                          {{merchant.tradingName}}
+                                      </td>
+
+                                      <td>
+                                        <button type="button" class="btn btn-danger  btn-sm" (click)="update(merchant.id)">Editar</button>
+                                        <button type="button" class="btn btn-warning btn-sm" (click)="excluir(merchant.id)">Excluir</button>
+                                      </td>
+
+                                  </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
